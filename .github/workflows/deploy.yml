@@ -1,21 +1,29 @@
-name: My First Workflow
+name: Runner Info
 
 on:
   push:
 
 jobs:
 
-  build:
+  info:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: List Files
+      - name: Current Directory
+        run: pwd
+
+      - name: Show Files
         run: ls -la
 
-      - name: Print Message
-        run: echo "GitHub Actions Working Successfully"
+      - name: Show OS
+        run: cat /etc/os-release
+
+      - name: Show User
+        run: whoami
+
+      - name: Show Docker Version
+        run: docker --version
